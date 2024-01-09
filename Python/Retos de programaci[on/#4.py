@@ -21,5 +21,3 @@ def primos_buscar(n):
 
 primos_buscar(2)
 primos()
-
-#Holaaaaa
