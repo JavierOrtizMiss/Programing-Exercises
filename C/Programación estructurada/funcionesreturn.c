@@ -8,6 +8,7 @@ int suma(int num1, int num2) {
 int main () {
     int numero1, numero2, operacion;
 
+
     printf("Introduzca el primero número: ");
     scanf("%d",&numero1);
     printf("\nEscribe el segundo número: ");
