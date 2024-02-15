@@ -19,7 +19,7 @@ int main() {
     } else if (reactivo1 == 'c' && reactivo2 == 'd' || reactivo1=='d' && reactivo2=='c') {
         printf("La mezcla de c y d explota.\n");
     } else {
-        printf("No hay reacción definida para esta combinación de reactivos.\n");
+        printf("No hay ninguna reacción.\n");
     }
 
     return 0;

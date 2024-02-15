@@ -5,7 +5,7 @@ int main() {
     //Declaramos la variable calificación como entero
     int calificacion;
     // Le pedimos al usuario que introduzca la calificación
-    printf("Introduzca la calificación: ");
+    printf("Introduzca la calificación: \n");
     scanf("%d", &calificacion);
 
     // Condición que si la calificación se encuentra en el rango de (91-100) imprima
