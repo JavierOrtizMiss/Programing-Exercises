@@ -39,25 +39,26 @@ int factorial(int n) {
 // Función para calcular la potencia de un número
 int potencia(int base, int exponente) {
     int result = 1;
-    int i=1;
-    while (i<=exponente){
-        result=base*i;
+    int i = 0;
+    while (i < exponente) {
+        result *= base;
         i++;
     }
     return result;
 }
 
+
 int main() {
-    // Prueba de la función de multiplicación
+    // Función de multiplicación
     printf("Multiplicación: %d\n", multiplicacion(5, 3));
 
-    // Prueba de la función de Fibonacci
+    // Función de Fibonacci
     printf("Fibonacci: %d\n", fibonacci(7));
 
-    // Prueba de la función de factorial
+    // Fnción de factorial
     printf("Factorial: %d\n", factorial(5));
 
-    // Prueba de la función de potencia
+    // Función de potencia
     printf("Potencia: %d\n", potencia(2, 3));
 
     return 0;
