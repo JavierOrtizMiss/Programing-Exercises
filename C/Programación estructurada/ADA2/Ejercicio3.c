@@ -11,6 +11,16 @@ int main() {
         printf("Ingrese un caracter ASCII: ");
         scanf(" %c", &caracter);
 
+        if (islower(caracter)==1)
+        {
+            printf("De minúscula a mayúscula: %c\n", toupper(caracter));
+        }
+        else if (isupper(caracter)==1)
+        {
+            printf("De mayúscula a caracter: %c\n", topunct(caracter));
+        }
+        
+    
         printf("¿Es mayúscula? %d\n", isupper(caracter));
         printf("¿Es minúscula? %d\n", islower(caracter));
         printf("¿Es un dígito? %d\n", isdigit(caracter));
