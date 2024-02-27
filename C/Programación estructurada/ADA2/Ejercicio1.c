@@ -4,12 +4,12 @@
 
 //Función para multiplicar
 int multiplicacion(float a, float b) {
-    int resultado = 0;
+    int result = 0;
     
     for (int i = 0; i < (float)b; i++) {
-        resultado += a;
+        result += a;
     }
-    return resultado;
+    return result;
 }
 
 // Función para calcular el número de Fibonacci dado su posición n
@@ -27,19 +27,24 @@ int fibonacci(int n) {
 
 // Función para calcular el factorial de un número
 int factorial(int n) {
-    if (n == 0)
-        return 1;
-    else
-        return n * factorial(n - 1);
+    int result = 1;
+    int i = 1;
+    while (i <= n) {
+        result *= i;
+        i++;
+    }
+    return result;
 }
 
 // Función para calcular la potencia de un número
 int potencia(int base, int exponente) {
-    int resultado = 1;
-    for (int i = 0; i < exponente; i++) {
-        resultado *= base;
+    int result = 1;
+    int i=1;
+    while (i<=exponente){
+        result=base*i;
+        i++;
     }
-    return resultado;
+    return result;
 }
 
 int main() {
