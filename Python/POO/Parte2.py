@@ -78,3 +78,4 @@ def elmejormaestrocuri():
     print("   10        %d    %d    %d    %d" % (f(1,0,0,0), f(1,0,0,1), f(1,0,1,1), f(1,0,1,0)))
 
 elmejormaestrocuri()
+
