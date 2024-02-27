@@ -1,7 +1,9 @@
+//Ortiz Miss Javier de Jesus
+
 #include <stdio.h>
 
-int correctos = 0; // Contador de respuestas correctas
-int incorrectos = 0; // Contador de respuestas incorrectas
+int correctos = 0; 
+int incorrectos = 0;
 
 // Función para sumar dos números
 void suma() {
@@ -19,10 +21,10 @@ void suma() {
 
     if (respuesta == resultado) {
         printf("Correcto mi estimado\n");
-        correctos++; // Incrementar contador de respuestas correctas
+        correctos++; 
     } else {
         printf("Incorrecto mi chavo. El resultado es %d.\n", resultado);
-        incorrectos++; // Incrementar contador de respuestas incorrectas
+        incorrectos++; 
     }
 }
 
@@ -42,10 +44,10 @@ void resta() {
 
     if (respuesta == resultado) {
         printf("Correcto mi estimado\n");
-        correctos++; // Incrementar contador de respuestas correctas
+        correctos++; 
     } else {
         printf("Incorrecto mi chavo. El resultado es %d.\n", resultado);
-        incorrectos++; // Incrementar contador de respuestas incorrectas
+        incorrectos++; 
     }
 }
 
@@ -65,10 +67,10 @@ void multiplicacion() {
 
     if (respuesta == resultado) {
         printf("Correcto mi estimado\n");
-        correctos++; // Incrementar contador de respuestas correctas
+        correctos++; 
     } else {
         printf("Incorrecto mi chavo. El resultado es %d.\n", resultado);
-        incorrectos++; // Incrementar contador de respuestas incorrectas
+        incorrectos++; 
     }
 }
 
@@ -88,10 +90,10 @@ void division() {
 
     if (respuesta == resultado) {
         printf("Correcto mi estimado\n");
-        correctos++; // Incrementar contador de respuestas correctas
+        correctos++; 
     } else {
         printf("Incorrecto mi chavo. El resultado es %d.\n", resultado);
-        incorrectos++; // Incrementar contador de respuestas incorrectas
+        incorrectos++; 
     }
 }
 
@@ -134,6 +136,7 @@ int main() {
                 printf("Opción no válida. Por favor, seleccione una opción que sea válida.\n");
         }
     }
+
 
     return 0;
 }
