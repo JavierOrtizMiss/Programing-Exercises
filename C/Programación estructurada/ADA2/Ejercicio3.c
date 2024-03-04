@@ -17,7 +17,7 @@ int main() {
         }
         else if (isupper(caracter)==1)
         {
-            printf("De mayúscula a caracter: %c\n", topunct(caracter));
+            printf("De mayúscula a caracter: %c\n", tolower(caracter));
         }
         
     
