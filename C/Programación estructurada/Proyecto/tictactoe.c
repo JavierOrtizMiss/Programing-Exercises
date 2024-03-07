@@ -1,148 +1,67 @@
-#include <stdio.h>
-#include <conio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <windows.h>
+#include <stdio.h> //Librería standard
+#include <unistd.h> //Librería para sleep
+int m[3][3];
 
-#define WIDTH 20
-#define HEIGHT 20
-#define UP 72
-#define DOWN 80
-#define LEFT 75
-#define RIGHT 77
+void tutorial(){
 
-int x, y, fruitX, fruitY, score, gameOver;
-int tailX[100], tailY[100];
-int nTail;
-int direction;
+    printf("---------BIENVENIDO A TIC TAC TOE---------")
 
-void Setup() {
-    gameOver = 0;
-    direction = RIGHT;
-    x = WIDTH / 2;
-    y = HEIGHT / 2;
-    fruitX = rand() % WIDTH;
-    fruitY = rand() % HEIGHT;
-    score = 0;
-    nTail = 0; // Se inicializa nTail a 0
+    printf("Tic Tac Toe, también conocido como tres en raya, es un juego de mesa para dos jugadores que se juega en una cuadrícula de 3x3. El objetivo del juego es colocar tres fichas del mismo tipo en línea, ya sea horizontal, vertical o diagonalmente, antes que el oponente. Cada jugador alterna colocando sus fichas en las casillas vacías hasta que uno de los jugadores logra formar una línea de tres fichas o se llena el tablero, resultando en un empate. ");
+
+    printf("+-------+-------+-------+");
+    printf("|       |       |       |");
+    printf("|   1   |   2   |   3   |");
+    printf("|       |       |       |");
+    printf("+-------+-------+-------+");
+    printf("|       |       |       |");
+    printf("|   4   |   5   |   6   |");
+    printf("|       |       |       |");
+    printf("+-------+-------+-------+");
+    printf("|       |       |       |");
+    printf("|   7   |   8   |   9   |");
+    printf("|       |       |       |");
+    printf("+-------+-------+-------+");
+
+
+
 }
 
-void Draw() {
-    system("cls");
-    for (int i = 0; i < WIDTH + 2; i++)
-        printf("#");
-    printf("\n");
+void mostrar_cuadro(){
+    
 
-    for (int i = 0; i < HEIGHT; i++) {
-        for (int j = 0; j < WIDTH; j++) {
-            if (j == 0)
-                printf("#");
-            if (i == y && j == x)
-                printf("O");
-            else if (i == fruitY && j == fruitX)
-                printf("F");
-            else {
-                int printTail = 0;
-                for (int k = 0; k < nTail; k++) {
-                    if (tailX[k] == j && tailY[k] == i) {
-                        printf("o");
-                        printTail = 1;
-                    }
-                }
-                if (!printTail)
-                    printf(" ");
-            }
-            if (j == WIDTH - 1)
-                printf("#");
-        }
-        printf("\n");
-    }
-
-    for (int i = 0; i < WIDTH + 2; i++)
-        printf("#");
-    printf("\n");
-    printf("Score: %d\n", score);
+    printf("+-------+-------+-------+");
+    printf("|       |       |       |");
+    printf("|   %c  |   %c   |   %c   |",m[1][1],m[1][2],m[1][3]);
+    printf("|       |       |       |");
+    printf("+-------+-------+-------+");
+    printf("|       |       |       |");
+    printf("|   %d   |   %d   |   %d   |",m[2][1],m[2][2],m[2][3]);
+    printf("|       |       |       |");
+    printf("+-------+-------+-------+");
+    printf("|       |       |       |");
+    printf("|   %d   |   %d   |   %d   |",m[3][1],m[3][2],m[3][2]);
+    printf("|       |       |       |");
+    printf("+-------+-------+-------+");
 }
 
-void Input() {
-    if (_kbhit()) {
-        switch (_getch()) {
-            case 'a':
-                direction = LEFT;
-                break;
-            case 'd':
-                direction = RIGHT;
-                break;
-            case 'w':
-                direction = UP;
-                break;
-            case 's':
-                direction = DOWN;
-                break;
-            case 'x':
-                gameOver = 1;
-                break;
-        }
-    }
+void introducir_movimiento(){
+
+    
+    
+
+
+
+
 }
 
-void Logic() {
-    int prevX = tailX[0];
-    int prevY = tailY[0];
-    int prev2X, prev2Y;
-    tailX[0] = x;
-    tailY[0] = y;
-    for (int i = 1; i < nTail; i++) {
-        prev2X = tailX[i];
-        prev2Y = tailY[i];
-        tailX[i] = prevX;
-        tailY[i] = prevY;
-        prevX = prev2X;
-        prevY = prev2Y;
-    }
-    switch (direction) {
-        case LEFT:
-            x--;
-            break;
-        case RIGHT:
-            x++;
-            break;
-        case UP:
-            y--;
-            break;
-        case DOWN:
-            y++;
-            break;
-        default:
-            break;
-    }
 
-    if (x >= WIDTH) x = 0;
-    else if (x < 0) x = WIDTH - 1;
-    if (y >= HEIGHT) y = 0;
-    else if (y < 0) y = HEIGHT - 1;
 
-    for (int i = 0; i < nTail; i++) {
-        if (tailX[i] == x && tailY[i] == y)
-            gameOver = 1;
-    }
+int main () {
 
-    if (x == fruitX && y == fruitY) {
-        score += 10;
-        fruitX = rand() % WIDTH;
-        fruitY = rand() % HEIGHT;
-        nTail++;
-    }
-}
 
-int main() {
-    srand(time(NULL));
-    Setup();
-    while (!gameOver) {
-        Draw();
-        Input();
-        Logic();
-        Sleep(100); // Velocidad del juego
-    }
+
+
+
+
     return 0;
 }
