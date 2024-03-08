@@ -54,10 +54,40 @@ void tutorial() {
 
     printf("\n");
 
+    sleep(3);
+
     printf("Introduce tu movimiento: 5\n\n");
 
-    sleep(5);
+    sleep(1);
 
+    printf("\n");
+
+    printf("+-------+-------+-------+\n");
+    printf("|       |       |       |\n");
+    printf("|       |       |       |\n");
+    printf("|       |       |       |\n");
+    printf("+-------+-------+-------+\n");
+    printf("|       |       |       |\n");
+    printf("|       |   X   |       |\n");
+    printf("|       |       |       |\n");
+    printf("+-------+-------+-------+\n");
+    printf("|       |       |       |\n");
+    printf("|       |       |       |\n");
+    printf("|       |       |       |\n");
+    printf("+-------+-------+-------+\n\n");
+
+    sleep(3);
+
+    printf("Introduce tu movimiento: 1\n\n");
+
+    sleep(1);
+
+    printf("\n");
+
+    printf("+-------+-------+-------+\n");
+    printf("|       |       |       |\n");
+    printf("|   0   |       |       |\n");
+    printf("|       |       |       |\n");
     printf("+-------+-------+-------+\n");
     printf("|       |       |       |\n");
     printf("|       |   X   |       |\n");
@@ -67,68 +97,185 @@ void tutorial() {
     printf("|       |       |       |\n");
     printf("|       |       |       |\n");
     printf("+-------+-------+-------+\n");
-    printf("|       |       |       |\n");
-    printf("|       |       |       |\n");
-    printf("|       |       |       |\n");
-    printf("+-------+-------+-------+\n\n");
 
-    printf("Introduce tu movimiento: 1\n\n");
+    sleep(3);
 
-    sleep(5);
+    printf("Introduce tu movimiento: 7\n\n");
+
+    sleep(1);
+
+    printf("\n");
 
     printf("+-------+-------+-------+\n");
     printf("|       |       |       |\n");
-    printf("|   0   |   X   |       |\n");
+    printf("|   0   |       |       |\n");
     printf("|       |       |       |\n");
     printf("+-------+-------+-------+\n");
     printf("|       |       |       |\n");
-    printf("|       |       |       |\n");
+    printf("|       |   X   |       |\n");
     printf("|       |       |       |\n");
     printf("+-------+-------+-------+\n");
     printf("|       |       |       |\n");
+    printf("|   X   |       |       |\n");
     printf("|       |       |       |\n");
+    printf("+-------+-------+-------+\n");
+
+    sleep(3);
+
+    printf("Introduce tu movimiento: 2\n\n");
+
+    sleep(1);
+
+    printf("\n");
+
+
+    printf("+-------+-------+-------+\n");
+    printf("|       |       |       |\n");
+    printf("|   0   |   0   |       |\n");
+    printf("|       |       |       |\n");
+    printf("+-------+-------+-------+\n");
+    printf("|       |       |       |\n");
+    printf("|       |   X   |       |\n");
+    printf("|       |       |       |\n");
+    printf("+-------+-------+-------+\n");
+    printf("|       |       |       |\n");
+    printf("|   X   |       |       |\n");
+    printf("|       |       |       |\n");
+    printf("+-------+-------+-------+\n");
+
+    sleep(3);
+
+    printf("Introduce tu movimiento: 3\n\n");
+
+    sleep(1);
+
+    printf("\n");
+
+
+    printf("+-------+-------+-------+\n");
+    printf("|       |       |       |\n");
+    printf("|   0   |   0   |   X   |\n");
+    printf("|       |       |       |\n");
+    printf("+-------+-------+-------+\n");
+    printf("|       |       |       |\n");
+    printf("|       |   X   |       |\n");
+    printf("|       |       |       |\n");
+    printf("+-------+-------+-------+\n");
+    printf("|       |       |       |\n");
+    printf("|   X   |       |       |\n");
+    printf("|       |       |       |\n");
+    printf("+-------+-------+-------+\n");
+
+    printf("!Haz Ganadoo¡\n");
+}
+
+void mostrar_cuadro() {
+    printf("+-------+-------+-------+\n");
+    printf("|       |       |       |\n");
+    printf("|   %c   |   %c   |   %c   |\n", m[0][0], m[0][1], m[0][2]);
+    printf("|       |       |       |\n");
+    printf("+-------+-------+-------+\n");
+    printf("|       |       |       |\n");
+    printf("|   %c   |   %c   |   %c   |\n", m[1][0], m[1][1], m[1][2]);
+    printf("|       |       |       |\n");
+    printf("+-------+-------+-------+\n");
+    printf("|       |       |       |\n");
+    printf("|   %c   |   %c   |   %c   |\n", m[2][0], m[2][1], m[2][2]);
     printf("|       |       |       |\n");
     printf("+-------+-------+-------+\n");
 }
 
-void mostrar_cuadro(){
-    
+void introducir_movimiento(int jugador) {
+    int movimiento;
+    if (jugador == 1)
+        printf("Introduce tu movimiento: ");
+    else
+        printf("Turno de la máquina...\n");
 
-    printf("+-------+-------+-------+");
-    printf("|       |       |       |");
-    printf("|   %c  |   %c   |   %c   |",m[1][1],m[1][2],m[1][3]);
-    printf("|       |       |       |");
-    printf("+-------+-------+-------+");
-    printf("|       |       |       |");
-    printf("|   %d   |   %d   |   %d   |",m[2][1],m[2][2],m[2][3]);
-    printf("|       |       |       |");
-    printf("+-------+-------+-------+");
-    printf("|       |       |       |");
-    printf("|   %d   |   %d   |   %d   |",m[3][1],m[3][2],m[3][2]);
-    printf("|       |       |       |");
-    printf("+-------+-------+-------+");
+    scanf("%d", &movimiento);
+
+    int fila = (movimiento - 1) / 3;
+    int columna = (movimiento - 1) % 3;
+
+    if (m[fila][columna] == ' ') {
+        if (jugador == 1)
+            m[fila][columna] = 'X';
+        else
+            m[fila][columna] = 'O';
+    } else {
+        printf("¡Movimiento inválido! Por favor, elige una casilla vacía.\n");
+        introducir_movimiento(jugador);
+    }
 }
 
-void introducir_movimiento(){
+int verificar_ganador() {
+    // Verificar filas y columnas
+    for (int i = 0; i < 3; ++i) {
+        if (m[i][0] == m[i][1] && m[i][1] == m[i][2] && m[i][0] != ' ')
+            return 1; // Jugador 1 gana
+        if (m[0][i] == m[1][i] && m[1][i] == m[2][i] && m[0][i] != ' ')
+            return 1; // Jugador 1 gana
+        if (m[i][0] == m[i][1] && m[i][1] == m[i][2] && m[i][0] != ' ')
+            return 2; // Jugador 2 (máquina) gana
+        if (m[0][i] == m[1][i] && m[1][i] == m[2][i] && m[0][i] != ' ')
+            return 2; // Jugador 2 (máquina) gana
+    }
+    // Verificar diagonales
+    if ((m[0][0] == m[1][1] && m[1][1] == m[2][2]) || (m[0][2] == m[1][1] && m[1][1] == m[2][0])) {
+        if (m[1][1] == 'X')
+            return 1; // Jugador 1 gana
+        else if (m[1][1] == 'O')
+            return 2; // Jugador 2 (máquina) gana
+    }
 
-    
-    
+    // Verificar empate
+    for (int i = 0; i < 3; ++i)
+        for (int j = 0; j < 3; ++j)
+            if (m[i][j] == ' ')
+                return -1; // Todavía hay casillas vacías
 
-
-
-
+    return 0; // Empate
 }
 
+int main() {
+    int opcion;
+    printf("¿Quieres ver el tutorial o jugar directamente?\n");
+    printf("1. Ver el tutorial\n");
+    printf("2. Jugar\n");
+    scanf("%d", &opcion);
 
+    if (opcion == 1) {
+        tutorial();
+    }
 
-int main () {
+    for (int i = 0; i < 3; ++i)
+        for (int j = 0; j < 3; ++j)
+            m[i][j] = ' ';
 
-    tutorial();
+    mostrar_cuadro();
+    int turno = 1;
+    int ganador = 0;
 
+    while (ganador == 0) {
+        introducir_movimiento(turno);
+        mostrar_cuadro();
+        ganador = verificar_ganador();
 
+        if (ganador != 0)
+            break;
 
+        if (turno == 1)
+            turno = 2;
+        else
+            turno = 1;
+    }
 
-
+    if (ganador == -1)
+        printf("¡Empate!\n");
+    else if (ganador == 1)
+        printf("¡Jugador 1 (tú) ganas!\n");
+    else if (ganador == 2)
+        printf("¡La máquina gana!\n");
 
     return 0;
 }
