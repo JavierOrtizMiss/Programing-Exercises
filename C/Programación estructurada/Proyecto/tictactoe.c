@@ -192,17 +192,50 @@ void mostrar_cuadro(){
 
 void introducir_movimiento() {
 
-
 }
 
 
 
 
 
+
 int main () {
+    int opcion = -1;
+
+
+    printf("---------BIENVENIDO A TIC TAC TOE---------\n\n");
+
+    while (opcion!=0){
+        printf("Seleccioné una opción: \n\n");
+        sleep(2);
+        printf("1. Ver tutorial\n"
+        "2. Jugar con maquina\n"
+        "3. Jugar con otro jugador\n\n");
+        printf("Opción: ");
+        scanf("%d", &opcion);
+
+        switch (opcion)
+        {
+            case 1:
+                
+                break;
+            case 2:
+                
+                break;
+            case 3:
+                
+                break;
+            case 0:
+                printf("------EL JUEGO HA FINALIZADO----");
+                break;
+            default:
+                printf("Opción no válida. Por favor, seleccione una opción que sea válida.\n");
+        }
+    }
     
 
-    mostrar_cuadro();
+
+
 
 
 
