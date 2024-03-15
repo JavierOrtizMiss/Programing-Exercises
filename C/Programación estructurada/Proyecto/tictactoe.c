@@ -11,6 +11,7 @@ void tutorial() {
        "fichas del mismo tipo en línea, ya sea horizontal, vertical o diagonalmente, antes que el oponente.\n"
        "Cada jugador alterna colocando sus fichas en las casillas vacías hasta que uno de los jugadores logra\n"
        "formar una línea de tres fichas o se llena el tablero, resultando en un empate.\n\n");
+       
     sleep(10);
 
     printf("Un ejemplo de la cuadrícula es la siguiente:\n\n");
@@ -190,7 +191,8 @@ void mostrar_cuadro(){
 
 }
 
-void introducir_movimiento() {
+void jugarmaquina() {
+
 
 }
 
