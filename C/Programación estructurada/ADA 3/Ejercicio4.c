@@ -34,5 +34,7 @@ int main() {
         printf("La frase no es un palíndromo.\n");
     }
 
+    
+
     return 0;
 }
