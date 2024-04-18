@@ -75,42 +75,70 @@ int verificar_ganador(char jugador) {
     return 0; // No ha ganado
 }
 
+int tablero_lleno() {
+    // Verificar si todas las casillas están ocupadas
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (m[i][j] == ' ') {
+                return 0; // El tablero no está lleno
+            }
+        }
+    }
+    return 1; // El tablero está lleno
+}
+
 void juegodos(){
     int jugador1, jugador2;
+    char respuesta;
 
     printf("¡Que empiece el juego!\n");
     printf("Jugador 1 es X y jugador 2 es O\n");
 
-    // Inicializar el tablero
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            m[i][j] = ' ';
-        }
-    }
-
     do {
-        mostrar_cuadro();
-        printf("Jugador 1 introduce tu movimiento: ");
-        scanf("%d", &jugador1);
-        // Actualizar tablero
-        m[(jugador1 - 1) / 3][(jugador1 - 1) % 3] = 'X';
-        if (verificar_ganador('X')) {
-            mostrar_cuadro();
-            printf("¡Felicidades! Jugador 1 (X) ha ganado.\n");
-            return;
+        // Inicializar el tablero
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                m[i][j] = ' ';
+            }
         }
 
-        mostrar_cuadro();
-        printf("Jugador 2 introduce tu movimiento: ");
-        scanf("%d", &jugador2);
-        // Actualizar tablero
-        m[(jugador2 - 1) / 3][(jugador2 - 1) % 3] = 'O';
-        if (verificar_ganador('O')) {
+        do {
             mostrar_cuadro();
-            printf("¡Felicidades! Jugador 2 (O) ha ganado.\n");
-            return;
-        }
-    } while (1);
+            printf("Jugador 1 introduce tu movimiento: ");
+            scanf("%d", &jugador1);
+            // Actualizar tablero
+            m[(jugador1 - 1) / 3][(jugador1 - 1) % 3] = 'X';
+            if (verificar_ganador('X')) {
+                mostrar_cuadro();
+                printf("¡Felicidades! Jugador 1 (X) ha ganado.\n");
+                break;
+            }
+
+            if (tablero_lleno()) {
+                printf("El tablero está lleno. ¡Es un empate!\n");
+                break;
+            }
+
+            mostrar_cuadro();
+            printf("Jugador 2 introduce tu movimiento: ");
+            scanf("%d", &jugador2);
+            // Actualizar tablero
+            m[(jugador2 - 1) / 3][(jugador2 - 1) % 3] = 'O';
+            if (verificar_ganador('O')) {
+                mostrar_cuadro();
+                printf("¡Felicidades! Jugador 2 (O) ha ganado.\n");
+                break;
+            }
+
+            if (tablero_lleno()) {
+                printf("El tablero está lleno. ¡Es un empate!\n");
+                break;
+            }
+        } while (1);
+
+        printf("¿Deseas jugar de nuevo? (s/n): ");
+        scanf(" %c", &respuesta);
+    } while (respuesta == 's');
 }
 
 int main() {
