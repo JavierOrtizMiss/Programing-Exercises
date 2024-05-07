@@ -12,7 +12,7 @@ void tutorial() {
            "Cada jugador alterna colocando sus fichas en las casillas vacías hasta que uno de los jugadores logra\n"
            "formar una línea de tres fichas o se llena el tablero, resultando en un empate.\n\n");
 
-    sleep(10);
+    sleep(4);
 
     printf("Un ejemplo de la cuadrícula es la siguiente:\n\n");
 
@@ -76,7 +76,7 @@ int verificar_ganador(char jugador) {
 }
 
 int tablero_lleno() {
-    // Verificar si todas las casillas están ocupadas
+    
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             if (m[i][j] == ' ') {
@@ -106,8 +106,9 @@ void juegodos(){
             mostrar_cuadro();
             printf("Jugador 1 introduce tu movimiento: ");
             scanf("%d", &jugador1);
-            // Actualizar tablero
-            m[(jugador1 - 1) / 3][(jugador1 - 1) % 3] = 'X';
+            if (jugador1>0 && jugador1<10)
+            {
+                m[(jugador1 - 1) / 3][(jugador1 - 1) % 3] = 'X';
             if (verificar_ganador('X')) {
                 mostrar_cuadro();
                 printf("¡Felicidades! Jugador 1 (X) ha ganado.\n");
@@ -118,12 +119,19 @@ void juegodos(){
                 printf("El tablero está lleno. ¡Es un empate!\n");
                 break;
             }
+            } else
+            {
+                printf("Por favor, introduzca un número valido\n");
+            }
+            
+        
 
             mostrar_cuadro();
             printf("Jugador 2 introduce tu movimiento: ");
             scanf("%d", &jugador2);
-            // Actualizar tablero
-            m[(jugador2 - 1) / 3][(jugador2 - 1) % 3] = 'O';
+            if (jugador2>0 && jugador2<10)
+            {
+                m[(jugador2 - 1) / 3][(jugador2 - 1) % 3] = 'O';
             if (verificar_ganador('O')) {
                 mostrar_cuadro();
                 printf("¡Felicidades! Jugador 2 (O) ha ganado.\n");
@@ -134,6 +142,12 @@ void juegodos(){
                 printf("El tablero está lleno. ¡Es un empate!\n");
                 break;
             }
+            } else
+            {
+                printf("Por favor, introduzca un número valido\n");
+            }
+            
+            
         } while (1);
 
         printf("¿Deseas jugar de nuevo? (s/n): ");
