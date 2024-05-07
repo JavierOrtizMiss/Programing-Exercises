@@ -1,3 +1,5 @@
+//Ortiz Miss Javier de Jesus
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -38,11 +40,11 @@ void borrar(struct Persona *lista, int *numPersonas) {
     }
 
     int indice;
-    printf("Ingrese el índice de la persona a borrar (0-%d): ", *numPersonas);
+    printf("Ingrese el índice de la persona a borrar (0-%d): ", *numPersonas - 1);
     scanf("%d", &indice);
 
     if (indice < 0 || indice >= *numPersonas) {
-        printf("Índice inválido. Debe estar entre 0 y %d.\n", *numPersonas);
+        printf("Índice inválido. Debe estar entre 0 y %d.\n", *numPersonas - 1);
         return;
     }
 
