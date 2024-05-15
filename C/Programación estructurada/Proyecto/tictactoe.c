@@ -1,11 +1,8 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
-#include <ctype.h> // Para la función isdigit
+#include <ctype.h>
 
 char m[3][3]; // Matriz para el tablero de juego
-int puntajes[2] = {0}; // Array para los puntajes de los jugadores
-char nombres[2][50]; // Array para los nombres de los jugadores
 
 void tutorial() {
     printf("---------BIENVENIDO A TIC TAC TOE---------\n\n");
@@ -16,7 +13,7 @@ void tutorial() {
            "Cada jugador alterna colocando sus fichas en las casillas vacías hasta que uno de los jugadores logra\n"
            "formar una línea de tres fichas o se llena el tablero, resultando en un empate.\n\n");
 
-    sleep(4);
+    sleep(10);
 
     printf("Un ejemplo de la cuadrícula es la siguiente:\n\n");
 
@@ -67,19 +64,20 @@ int verificar_ganador(char jugador) {
     for (int i = 0; i < 3; i++) {
         if ((m[i][0] == jugador && m[i][1] == jugador && m[i][2] == jugador) ||
             (m[0][i] == jugador && m[1][i] == jugador && m[2][i] == jugador)) {
-            return 1;
+            return 1; 
         }
     }
 
     // Verificar si ganó en diagonal
     if ((m[0][0] == jugador && m[1][1] == jugador && m[2][2] == jugador) ||
         (m[0][2] == jugador && m[1][1] == jugador && m[2][0] == jugador)) {
-        return 1;
+        return 1; 
     }
     return 0; // No ha ganado
 }
 
 int tablero_lleno() {
+    // Verificar si todas las casillas están ocupadas
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
             if (m[i][j] == ' ') {
@@ -90,18 +88,13 @@ int tablero_lleno() {
     return 1; // El tablero está lleno
 }
 
-void juegodos() {
-    int jugador1, jugador2;
+void juegodos(){
+    int jugador;
     char respuesta;
-    int valid_input; // Variable para verificar la entrada válida
+    char turno = 'X'; // Iniciamos con el turno del jugador X
 
     printf("¡Que empiece el juego!\n");
     printf("Jugador 1 es X y jugador 2 es O\n");
-
-    printf("Ingrese el nombre del Jugador 1: ");
-    scanf("%s", nombres[0]);
-    printf("Ingrese el nombre del Jugador 2: ");
-    scanf("%s", nombres[1]);
 
     do {
         // Inicializar el tablero
@@ -113,53 +106,51 @@ void juegodos() {
 
         do {
             mostrar_cuadro();
-            valid_input = 0; // Inicializar la variable a 0
-            printf("%s introduce tu movimiento: ", nombres[0]);
-            if (scanf("%d", &jugador1) == 1 && jugador1 > 0 && jugador1 < 10) {
-                valid_input = 1; // La entrada es válida
-                m[(jugador1 - 1) / 3][(jugador1 - 1) % 3] = 'X';
-                if (verificar_ganador('X')) {
-                    mostrar_cuadro();
-                    printf("¡Felicidades! %s ha ganado.\n", nombres[0]);
-                    puntajes[0] += 20;
-                    break;
-                }
+            printf("Jugador %c introduce tu movimiento (1-9): ", turno);
+            char input[10];
+            scanf("%s", input);
 
-                if (tablero_lleno()) {
-                    printf("El tablero está lleno. ¡Es un empate!\n");
+            // Verificar si el input contiene solo dígitos
+            int valido = 1;
+            for (int i = 0; input[i] != '\0'; i++) {
+                if (!isdigit(input[i])) {
+                    valido = 0;
                     break;
                 }
-            } else {
-                printf("Por favor, introduzca un número válido\n");
-                // Limpiar el búfer de entrada
-                while (getchar() != '\n');
             }
 
-            if (valid_input) {
+            if (!valido) {
+                printf("Entrada no válida. Por favor, introduce un número del 1 al 9.\n");
+                continue;
+            }
+
+            jugador = input[0] - '0'; // Convertir el carácter a entero
+
+            if (jugador < 1 || jugador > 9) {
+                printf("Número fuera de rango. Por favor, introduce un número del 1 al 9.\n");
+                continue;
+            }
+
+            // Verificar si la casilla está ocupada
+            if (m[(jugador - 1) / 3][(jugador - 1) % 3] != ' ') {
+                printf("La casilla está ocupada. Por favor, elige otra.\n");
+                continue;
+            }
+
+            // Actualizar tablero
+            m[(jugador - 1) / 3][(jugador - 1) % 3] = turno;
+            if (verificar_ganador(turno)) {
                 mostrar_cuadro();
-                valid_input = 0; // Reiniciar la variable a 0
-                printf("%s introduce tu movimiento: ", nombres[1]);
-                if (scanf("%d", &jugador2) == 1 && jugador2 > 0 && jugador2 < 10) {
-                    valid_input = 1; // La entrada es válida
-                    m[(jugador2 - 1) / 3][(jugador2 - 1) % 3] = 'O';
-                    if (verificar_ganador('O')) {
-                        mostrar_cuadro();
-                        printf("¡Felicidades! %s ha ganado.\n", nombres[1]);
-                        puntajes[1] += 20;
-                        break;
-                    }
-
-                    if (tablero_lleno()) {
-                        printf("El tablero está lleno. ¡Es un empate!\n");
-                        break;
-                    }
-                } else {
-                    printf("Por favor, introduzca un número válido\n");
-                    // Limpiar el búfer de entrada
-                    while (getchar() != '\n');
-                }
+                printf("¡Felicidades! Jugador %c ha ganado.\n", turno);
+                break;
             }
 
+            if (tablero_lleno()) {
+                printf("El tablero está lleno. ¡Es un empate!\n");
+                break;
+            }
+
+            turno = (turno == 'X') ? 'O' : 'X'; // Cambiamos el turno
         } while (1);
 
         printf("¿Deseas jugar de nuevo? (s/n): ");
@@ -167,23 +158,16 @@ void juegodos() {
     } while (respuesta == 's');
 }
 
-void ver_puntajes() {
-    printf("Puntaje actual:\n");
-    for (int i = 0; i < 2; i++) {
-        printf("%s: %d puntos\n", nombres[i], puntajes[i]);
-    }
-}
-
 int main() {
     int opcion = -1;
 
     printf("---------BIENVENIDO A TIC TAC TOE---------\n\n");
+    printf("--> RECUERDE QUE PARA JUGAR ESTE JUEGO SE NECESITAN DOS PERSONAS <--\n\n");
 
     while (opcion != 0) {
         printf("Seleccione una opción:\n\n");
         printf("1. Ver tutorial\n"
-               "2. Jugar con otro jugador\n"
-               "3. Ver puntajes\n"
+               "2. Jugar\n"
                "0. Salir\n\n");
         printf("Opción: ");
         scanf("%d", &opcion);
@@ -194,9 +178,6 @@ int main() {
                 break;
             case 2:
                 juegodos();
-                break;
-            case 3:
-                ver_puntajes();
                 break;
             case 0:
                 printf("------EL JUEGO HA FINALIZADO----\n");
