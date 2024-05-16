@@ -1,16 +1,12 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <ctype.h>
-#include <stdlib.h>
 #include <string.h>
 
 char m[3][3]; // Matriz para el tablero de juego
-struct Jugador {
-    char nombre[50];
-    int puntaje;
-};
-struct Jugador jugadores[100]; // Array para almacenar los jugadores y sus puntajes
-int num_jugadores = 0; // Número actual de jugadores
+char ganadores[10][50]; // Arreglo para almacenar los nombres de los jugadores ganadores
+int puntajes[10]; // Arreglo para almacenar los puntajes de los jugadores
+int num_ganadores = 0; // Contador de ganadores
 
 void tutorial() {
     printf("---------BIENVENIDO A TIC TAC TOE---------\n\n");
@@ -96,33 +92,10 @@ int tablero_lleno() {
     return 1; // El tablero está lleno
 }
 
-void actualizar_puntaje(char nombre_jugador[], int puntos) {
-    // Buscar al jugador en la lista
-    for (int i = 0; i < num_jugadores; i++) {
-        if (strcmp(jugadores[i].nombre, nombre_jugador) == 0) {
-            jugadores[i].puntaje += puntos;
-            return;
-        }
-    }
-    // Si el jugador no está en la lista, añadirlo
-    strcpy(jugadores[num_jugadores].nombre, nombre_jugador);
-    jugadores[num_jugadores].puntaje = puntos;
-    num_jugadores++;
-}
-
-void ver_puntajes() {
-    printf("Puntajes:\n");
-    for (int i = 0; i < num_jugadores; i++) {
-        printf("%s: %d\n", jugadores[i].nombre, jugadores[i].puntaje);
-    }
-}
-
-void juegodos() {
+void juegodos(){
     int jugador;
     char respuesta;
     char turno = 'X'; // Iniciamos con el turno del jugador X
-    char ganador;
-    char nombre_ganador[50]; // Variable para almacenar el nombre del jugador ganador
 
     printf("¡Que empiece el juego!\n");
     printf("Jugador 1 es X y jugador 2 es O\n");
@@ -141,26 +114,13 @@ void juegodos() {
             char input[10];
             scanf("%s", input);
 
-            // Verificar si el input contiene solo dígitos
-            int valido = 1;
-            for (int i = 0; input[i] != '\0'; i++) {
-                if (!isdigit(input[i])) {
-                    valido = 0;
-                    break;
-                }
-            }
-
-            if (!valido) {
+            // Verificar si el input contiene solo un carácter y si ese carácter es un número del 1 al 9
+            if (strlen(input) != 1 || input[0] < '1' || input[0] > '9') {
                 printf("Entrada no válida. Por favor, introduce un número del 1 al 9.\n");
                 continue;
             }
 
             jugador = input[0] - '0'; 
-
-            if (jugador < 1 || jugador > 9) {
-                printf("Número fuera de rango. Por favor, introduce un número del 1 al 9.\n");
-                continue;
-            }
 
             // Verificar si la casilla está ocupada
             if (m[(jugador - 1) / 3][(jugador - 1) % 3] != ' ') {
@@ -173,9 +133,26 @@ void juegodos() {
             if (verificar_ganador(turno)) {
                 mostrar_cuadro();
                 printf("¡Felicidades! Jugador %c ha ganado.\n", turno);
-                ganador = turno;
-                strcpy(nombre_ganador, (ganador == 'X') ? "Jugador 1" : "Jugador 2");
-                actualizar_puntaje(nombre_ganador, 20);
+                printf("Introduzca el nombre del ganador: ");
+                char nombre[50];
+                scanf("%s", nombre);
+
+                int repetido = 0;
+                for (int i = 0; i < num_ganadores; i++) {
+                    if (strcmp(nombre, ganadores[i]) == 0) {
+                        puntajes[i] += 20;
+                        printf("Puntaje de %s aumentado a %d\n", nombre, puntajes[i]);
+                        repetido = 1;
+                        break;
+                    }
+                }
+
+                if (!repetido) {
+                    strcpy(ganadores[num_ganadores], nombre);
+                    puntajes[num_ganadores] = 20;
+                    num_ganadores++;
+                }
+
                 break;
             }
 
@@ -187,13 +164,16 @@ void juegodos() {
             turno = (turno == 'X') ? 'O' : 'X'; // Cambiamos el turno
         } while (1);
 
-        // Pedir el nombre del jugador ganador
-        printf("Introduce tu nombre: ");
-        scanf("%s", nombre_ganador);
-
         printf("¿Deseas jugar de nuevo? (s/n): ");
         scanf(" %c", &respuesta);
     } while (respuesta == 's');
+}
+
+void verpuntajes(){
+    printf("Lista de jugadores ganadores y sus puntajes:\n");
+    for (int i = 0; i < num_ganadores; i++) {
+        printf("Jugador: %s - Puntos: %d\n", ganadores[i], puntajes[i]);
+    }
 }
 
 int main() {
@@ -206,7 +186,7 @@ int main() {
         printf("Seleccione una opción:\n\n");
         printf("1. Ver tutorial\n"
                "2. Jugar\n"
-               "3. Ver puntajes\n"
+               "3. Lista de puntajes\n"
                "0. Salir\n\n");
         printf("Opción: ");
         scanf("%d", &opcion);
@@ -219,7 +199,7 @@ int main() {
                 juegodos();
                 break;
             case 3:
-                ver_puntajes();
+                verpuntajes();
                 break;
             case 0:
                 printf("------EL JUEGO HA FINALIZADO----\n");
