@@ -16,7 +16,7 @@ public class ProbarCuenta {
         String description = scanner.nextLine();
 
         Cuenta nuevacuenta = new Cuenta(saldo, nocuenta, description);
-        int option;  
+        int option;
 
         do {
             System.out.println("\nIngrese las opciones que desea hacer con la cuenta.\n");
@@ -35,7 +35,6 @@ public class ProbarCuenta {
                     System.out.println("Su saldo es de " + nuevacuenta.getSaldo());
                     break;
                 case 3:
-                    System.out.println("Saliendo del programa...");
                     break;
                 default:
                     System.out.println("Opción no válida. Por favor, elija una opción del menú.");
@@ -43,6 +42,7 @@ public class ProbarCuenta {
             }
 
         } while (option != 3);  
+        
 
         scanner.close(); 
     }
