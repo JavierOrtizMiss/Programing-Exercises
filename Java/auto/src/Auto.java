@@ -3,7 +3,7 @@ public class Auto {
     private int noPuertas;
     private String color;
     private String tipoMotor;
-    private int velocidad; // Añadido
+    private int velocidad; 
 
     //métodos obtener
     public int obtenerPuertas(){
