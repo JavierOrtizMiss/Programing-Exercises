@@ -1,28 +1,35 @@
-/**
- * Cuenta
- */
 public class Cuenta {
 
+    //Atributos
     private Double saldo;
-    private String nocuenta;
+    private int numCuenta;
     private String description;
 
-    public Cuenta(Double saldo, String nocuenta, String description){
+    //Constructor
+    public Cuenta(Double saldo, int numCuenta, String description){
         this.saldo = saldo;
-        this.nocuenta = nocuenta;
+        this.numCuenta = numCuenta;
         this.description = description;
     }
 
+    //Métodos getter
     public Double getSaldo(){
         return saldo;
     }
-    public String getNocuenta(){
-        return nocuenta;
+    public int getNumcuenta(){
+        return numCuenta;
     }
     public String getDescription(){
         return description;
     }
 
-    //hola como estas
+    //Setters
+
     
+
+
+
+
+    
+
 }
