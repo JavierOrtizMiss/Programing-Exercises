@@ -31,5 +31,18 @@ public class Cuenta {
         }
     }
 
+    public void setSaldo(Double saldo) {
+        this.saldo = saldo;
+    }
+
+    public void setNocuenta(String nocuenta) {
+        this.nocuenta = nocuenta;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    //Método Setter
 
 }

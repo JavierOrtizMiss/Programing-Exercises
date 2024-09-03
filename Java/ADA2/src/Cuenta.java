@@ -23,7 +23,25 @@ public class Cuenta {
         return description;
     }
 
-    //Setters
+    //Setter
+    public void setSaldo(Double saldo) {
+        this.saldo = saldo;
+    }
+
+    public int getNumCuenta() {
+        return numCuenta;
+    }
+
+    public void setNumCuenta(int numCuenta) {
+        this.numCuenta = numCuenta;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    
+
 
     
 
