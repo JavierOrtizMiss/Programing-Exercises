@@ -40,6 +40,16 @@ public class Cuenta {
         this.description = description;
     }
 
+    //Métodos
+    public void ingreso(Double cantidad){
+        saldo += cantidad;
+    }
+
+    
+
+
+
+
     
 
 
