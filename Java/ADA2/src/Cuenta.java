@@ -42,22 +42,13 @@ public class Cuenta {
 
     //Métodos
     public void ingreso(Double cantidad){
-        saldo += cantidad;
     }
 
-    
+    public void retiro(){
+    }
 
-
-
-
-    
-
-
-    
-
-
-
-
+    public void transferencia(){   
+    }
     
 
 }
