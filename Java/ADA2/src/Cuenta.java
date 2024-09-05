@@ -1,54 +1,65 @@
-public class Cuenta {
+import java.util.ArrayList;
+import java.util.Scanner;
 
-    //Atributos
+public class Cuenta {
+    // Atributos
     private Double saldo;
     private int numCuenta;
-    private String description;
+    private String descripcion;
 
-    //Constructor
-    public Cuenta(Double saldo, int numCuenta, String description){
+    // Constructor
+    public Cuenta(Double saldo, int numCuenta, String descripcion) {
         this.saldo = saldo;
         this.numCuenta = numCuenta;
-        this.description = description;
+        this.descripcion = descripcion;
     }
 
-    //Métodos getter
-    public Double getSaldo(){
+    // Métodos getter
+    public Double getSaldo() {
         return saldo;
-    }
-    public int getNumcuenta(){
-        return numCuenta;
-    }
-    public String getDescription(){
-        return description;
-    }
-
-    //Setter
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
     }
 
     public int getNumCuenta() {
         return numCuenta;
     }
 
-    public void setNumCuenta(int numCuenta) {
-        this.numCuenta = numCuenta;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    // Métodos
+    public void ingreso(Double monto) {
+        if (monto > 0) {
+            saldo += monto;
+            System.out.println("Ingreso realizado. Su saldo es de: " + saldo);
+        } else {
+            System.out.println("Por favor, ingrese un monto válido");
+        }
     }
 
-    //Métodos
-    public void ingreso(Double cantidad){
+    public void retiro(Double monto) {
+        if (monto > 0 && saldo >= monto) {
+            saldo -= monto;
+            System.out.println("Retiro realizado. Su saldo es de: " + saldo);
+        } else {
+            System.out.println("Saldo insuficiente o monto no válido. Por favor introduzca un monto válido de acuerdo a su saldo.");
+        }
     }
 
-    public void retiro(){
+    public void transferencia(Cuenta destino, double monto) {
+        if (monto > 0 && saldo >= monto) {
+            this.retiro(monto);
+            destino.ingreso(monto);
+            System.out.println("Transferencia realizada a la cuenta: " + destino.getNumCuenta());
+        } else {
+            System.out.println("No se puede realizar la transferencia.");
+        }
     }
 
-    public void transferencia(){   
-    }
-    
+    //Método toString
 
+    @Override
+    public String toString() {
+        return "Cuenta número: " + numCuenta + "\nDescripción: " + descripcion + "\nSaldo: " + saldo;
+    }
 }
