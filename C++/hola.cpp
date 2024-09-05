@@ -3,6 +3,6 @@ using namespace std;
 
 int main(){
     cout<<"Hola"<<endl;
-    cout<<"Que pedo"<<endl;
+    cout<<"Que onda"<<endl;
     return 0;
 }
