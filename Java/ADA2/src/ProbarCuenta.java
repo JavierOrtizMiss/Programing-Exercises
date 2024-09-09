@@ -118,7 +118,7 @@ public class ProbarCuenta {
                     System.out.println("Programa terminado pa");
                     break;
                 default:
-                    System.out.println("Opción no válida. Por favor, intente de nuevo.");
+                    System.out.println("Opción no válida.");
                     break;
             }
         } while (option != 7);
