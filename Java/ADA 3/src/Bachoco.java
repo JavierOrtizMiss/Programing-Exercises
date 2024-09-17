@@ -5,6 +5,11 @@ public class Bachoco{
     private static ArrayList<Empleado> empleados = new ArrayList<>();
     private static ArrayList<Departamento> departamentos = new ArrayList<>();
 
+    public static void clean() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
     public static void main(String[] args) {
         inicializarDepartamentos();
         Scanner sc = new Scanner(System.in);
@@ -33,33 +38,33 @@ public class Bachoco{
     private static void registrarEmpleado(Scanner sc) {
         System.out.print("Ingrese la clave del empleado: ");
         String clave = sc.next();
-
+        clean();
         System.out.print("Ingrese el nombre del empleado: ");
         String nombre = sc.next();
-
+        clean();
         System.out.print("Ingrese el apellido paterno del empleado: ");
         String apellidoPaterno = sc.next();
-
+        clean();
         System.out.print("Ingrese el apellido materno del empleado: ");
         String apellidoMaterno = sc.next();
-
+        clean();
         System.out.println("Fecha de nacimiento:");
         Fecha fechaNacimiento = capturarFecha(sc);
-
+        clean();
         System.out.println("Fecha de ingreso:");
         Fecha fechaIngreso = capturarFecha(sc);
-
+        clean();
         Departamento departamento = capturarDepartamento(sc);
-
+        clean();
         System.out.println("Horario de lunes a viernes:");
         Horario horarioLV = capturarHorario(sc);
-
+        clean();
         System.out.println("¿El empleado trabaja los sábados? (s/n): ");
         Horario horarioS = null;
         if (sc.next().equalsIgnoreCase("s")) {
             horarioS = capturarHorario(sc);
         }
-
+        clean();
         System.out.println("¿El empleado trabaja los domingos? (s/n): ");
         Horario horarioD = null;
         if (sc.next().equalsIgnoreCase("s")) {
