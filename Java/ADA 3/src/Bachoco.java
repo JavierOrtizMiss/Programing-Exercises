@@ -14,7 +14,11 @@ public class Bachoco{
         inicializarDepartamentos();
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Bienvenido al sistema de registro de empleados.");
+        System.out.println("#####################################################################");
+        System.out.println("#                                                                   #");
+        System.out.println("#           Bienvenido al sistema de registo de empleados           #");
+        System.out.println("#                                                                   #");                                       
+        System.out.println("#####################################################################\n");
 
         boolean continuar = true;
         while (continuar) {
@@ -36,23 +40,47 @@ public class Bachoco{
     }
 
     private static void registrarEmpleado(Scanner sc) {
-        System.out.print("Ingrese la clave del empleado: ");
+        System.out.print("Ingrese la clave del empleado (4 caracteres máximo): ");
         String clave = sc.next();
         clean();
+        while (clave.length() > 4) {
+            System.out.print("La clave excede los 4 caracteres. Intente nuevamente: ");
+            clave = sc.next();
+            clean();
+        }
         System.out.print("Ingrese el nombre del empleado: ");
         String nombre = sc.next();
         clean();
+        while (!nombre.matches("[a-zA-Z]+")) {
+            System.out.print("Nombre inválido. Ingrese solo letras: ");
+            nombre = sc.next();
+            clean();
+        }
         System.out.print("Ingrese el apellido paterno del empleado: ");
         String apellidoPaterno = sc.next();
         clean();
+        while (!nombre.matches("[a-zA-Z]+")) {
+            System.out.print("Apellido inválido. Ingrese solo letras: ");
+            nombre = sc.next();
+            clean();
+        }
         System.out.print("Ingrese el apellido materno del empleado: ");
         String apellidoMaterno = sc.next();
         clean();
+        while (!nombre.matches("[a-zA-Z]+")) {
+            System.out.print("Apellido inválido. Ingrese solo letras: ");
+            nombre = sc.next();
+            clean();
+        }
         System.out.println("Fecha de nacimiento:");
         Fecha fechaNacimiento = capturarFecha(sc);
         clean();
         System.out.println("Fecha de ingreso:");
         Fecha fechaIngreso = capturarFecha(sc);
+        if (!Fecha.fechaEsConsistente(fechaNacimiento, fechaIngreso)) {
+            System.out.println("La fecha de ingreso no es consistente con la fecha de nacimiento.");
+            return;
+        }
         clean();
         Departamento departamento = capturarDepartamento(sc);
         clean();
@@ -78,10 +106,10 @@ public class Bachoco{
         System.out.println("Empleado registrado con éxito.");
     }
 
-    private static Fecha capturarFecha(Scanner sc) {
+    public static Fecha capturarFecha(Scanner sc) {
         int dia, mes, anio;
-        boolean fechaValida;
-        do {
+
+        while (true) {
             System.out.print("Ingrese el día: ");
             dia = sc.nextInt();
             System.out.print("Ingrese el mes: ");
@@ -89,22 +117,60 @@ public class Bachoco{
             System.out.print("Ingrese el año: ");
             anio = sc.nextInt();
 
-            fechaValida = Fecha.validFecha(dia, mes, anio);
-            if (!fechaValida) {
-                System.out.println("Fecha no válida, por favor inténtalo de nuevo.");
+            Fecha fecha = new Fecha(dia, mes, anio);
+
+            if (Fecha.validFecha(dia, mes, anio)) {
+                return fecha;
+            } else {
+                System.out.println("Fecha inválida o la persona no es mayor de edad. Inténtelo nuevamente.");
             }
-        } while (!fechaValida); 
-
-        return new Fecha(dia, mes, anio); 
+        }
     }
-
     private static Horario capturarHorario(Scanner sc) {
-        System.out.print("Ingrese la hora de inicio (HH:MM): ");
-        String horaInicio = sc.next();
-        System.out.print("Ingrese la hora de fin (HH:MM): ");
-        String horaFin = sc.next();
-        return new Horario(horaInicio, horaFin);
+        int horaInicio, minutoInicio, horaFin, minutoFin;
+        
+        
+        while (true) {
+            System.out.print("Ingrese la hora de inicio (0-23): ");
+            horaInicio = sc.nextInt();
+            if (horaInicio >= 0 && horaInicio <= 23) break;
+            System.out.println("Hora inválida. Debe estar entre 0 y 23.");
+        }
+    
+        
+        while (true) {
+            System.out.print("Ingrese los minutos de inicio (0-59): ");
+            minutoInicio = sc.nextInt();
+            if (minutoInicio >= 0 && minutoInicio <= 59) break;
+            System.out.println("Minutos inválidos. Deben estar entre 0 y 59.");
+        }
+        
+
+        while (true) {
+            System.out.print("Ingrese la hora de fin (0-23): ");
+            horaFin = sc.nextInt();
+            if (horaFin >= 0 && horaFin <= 23) break;
+            System.out.println("Hora inválida. Debe estar entre 0 y 23.");
+        }
+    
+        
+        while (true) {
+            System.out.print("Ingrese los minutos de fin (0-59): ");
+            minutoFin = sc.nextInt();
+            if (minutoFin >= 0 && minutoFin <= 59) break;
+            System.out.println("Minutos inválidos. Deben estar entre 0 y 59.");
+        }
+    
+        if (horaFin < horaInicio || (horaFin == horaInicio && minutoFin <= minutoInicio)) {
+            System.out.println("La hora de fin debe ser después de la hora de inicio.");
+            return capturarHorario(sc); 
+        }
+
+        String horaInicioStr = String.format("%02d:%02d", horaInicio, minutoInicio);
+        String horaFinStr = String.format("%02d:%02d", horaFin, minutoFin);
+        return new Horario(horaInicioStr, horaFinStr);
     }
+    
 
     private static Departamento capturarDepartamento(Scanner sc) {
         System.out.println("Seleccione el departamento:");
@@ -117,8 +183,31 @@ public class Bachoco{
 
     private static void mostrarEmpleados() {
         System.out.println("\nEmpleados registrados:");
+        System.out.printf("%-10s %-20s %-20s %-20s %-15s %-15s %-15s %-30s\n", 
+                          "Clave", "Nombre", "Apellido Paterno", "Apellido Materno", 
+                          "Fecha Nac.", "Fecha Ingreso", "Departamento", "Horario");
+    
         for (Empleado empleado : empleados) {
-            System.out.println(empleado.toString());
+            String clave = empleado.getClave();
+            String nombre = empleado.getNombre();
+            String apellidoPaterno = empleado.getApellidoPaterno();
+            String apellidoMaterno = empleado.getApellidoMaterno();
+            String fechaNacimiento = empleado.getFechaNacimiento().toString();
+            String fechaIngreso = empleado.getFechaIngreso().toString();
+            String departamento = empleado.getDepartamento().getNombre();
+            String horario = empleado.getHorarioLV().toString();
+            
+            if (empleado.getHorarioS() != null) {
+                horario += ", S = " + empleado.getHorarioS().toString();
+            }
+            if (empleado.getHorarioD() != null) {
+                horario += ", D = " + empleado.getHorarioD().toString();
+            }
+    
+            System.out.printf("%-10s %-20s %-20s %-20s %-15s %-15s %-15s %-30s\n",
+                              clave, nombre, apellidoPaterno, apellidoMaterno,
+                              fechaNacimiento, fechaIngreso, departamento, horario);
         }
     }
+    
 }

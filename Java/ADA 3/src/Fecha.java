@@ -9,7 +9,6 @@ public class Fecha {
         this.anio = anio;
     }
 
-
     public static boolean esBisiesto(int anio) {
         if (anio % 400 == 0) {
             return true;
@@ -22,7 +21,6 @@ public class Fecha {
         }
     }
 
-
     public static boolean validFecha(int dia, int mes, int anio) {
         if (mes < 1 || mes > 12 || dia < 1 || dia > 31) {
             return false;
@@ -32,6 +30,25 @@ public class Fecha {
             return dia <= 30;
         }
         return true; 
+    }
+
+    public static boolean esMayorDeEdad(Fecha fechaNacimiento) {
+        int anioActual = 2024;
+        return (anioActual - fechaNacimiento.anio) >= 18;
+    }
+
+    public static boolean fechaEsConsistente(Fecha fechaNacimiento, Fecha fechaIngreso) {
+        if (fechaIngreso.anio < fechaNacimiento.anio ||
+            (fechaIngreso.anio == fechaNacimiento.anio && fechaIngreso.mes < fechaNacimiento.mes) ||
+            (fechaIngreso.anio == fechaNacimiento.anio && fechaIngreso.mes == fechaNacimiento.mes && fechaIngreso.dia < fechaNacimiento.dia)) {
+            return false;
+        }
+        
+        int edad = fechaIngreso.anio - fechaNacimiento.anio;
+        if (fechaIngreso.mes < fechaNacimiento.mes || (fechaIngreso.mes == fechaNacimiento.mes && fechaIngreso.dia < fechaNacimiento.dia)) {
+            edad--;
+        }
+        return edad >= 18;
     }
 
     @Override
