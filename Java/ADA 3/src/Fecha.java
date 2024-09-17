@@ -24,7 +24,8 @@ public class Fecha {
     public static boolean validFecha(int dia, int mes, int anio) {
         if (mes < 1 || mes > 12 || dia < 1 || dia > 31) {
             return false;
-        } else if (mes == 2) {
+        } 
+        else if (mes == 2) {
             return (esBisiesto(anio) && dia <= 29) || (!esBisiesto(anio) && dia <= 28);
         } else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
             return dia <= 30;
@@ -43,7 +44,7 @@ public class Fecha {
             (fechaIngreso.anio == fechaNacimiento.anio && fechaIngreso.mes == fechaNacimiento.mes && fechaIngreso.dia < fechaNacimiento.dia)) {
             return false;
         }
-        
+
         int edad = fechaIngreso.anio - fechaNacimiento.anio;
         if (fechaIngreso.mes < fechaNacimiento.mes || (fechaIngreso.mes == fechaNacimiento.mes && fechaIngreso.dia < fechaNacimiento.dia)) {
             edad--;
