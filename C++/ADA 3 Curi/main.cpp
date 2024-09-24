@@ -1,16 +1,20 @@
 #include <bits/stdc++.h>
+#include "States/states.h"
 
 using namespace std;
 
-int main() {
-    ifstream archivo("datos.txt");
-    string linea;
-    
-    while (getline(archivo, linea)) {
-        cout << linea << endl; 
+int main(){
+    ifstream archivo("automata.txt");
+    string line;
+
+    while (getline(archivo,line))
+    {
+        cout << line << endl;
     }
+    
 
-    archivo.close(); 
 
+
+    archivo.close();
     return 0;
 }
