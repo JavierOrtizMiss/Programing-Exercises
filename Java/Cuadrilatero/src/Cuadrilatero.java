@@ -1,11 +1,12 @@
 public class Cuadrilatero {
-    private int[][] vertices = new int[4][2];
-    
-    public Cuadrilatero(int[][]vertices){
+    protected double[][] vertices;
+
+    public Cuadrilatero(double[][] vertices) {
         this.vertices = vertices;
     }
 
-    public int[][] getVertice(){
-        return vertices;
-}
+    // Método genérico que puede ser sobrescrito por las subclases
+    public double calcularArea() {
+        return 0.0;
+    }
 }

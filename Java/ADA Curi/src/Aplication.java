@@ -6,9 +6,9 @@ public class Aplication {
     public static void main(String[] args) {
         String rutaArchivo = "automata.txt"; 
 
-        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+        try (BufferedReader readfile = new BufferedReader(new FileReader(rutaArchivo))) {
             String linea;
-            while ((linea = br.readLine()) != null) {
+            while ((linea = readfile.readLine()) != null) {
                 System.out.println(linea);
             }
         } catch (IOException e) {
