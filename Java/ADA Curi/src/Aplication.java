@@ -8,9 +8,9 @@ public class Aplication {
         String rutaArchivo = "automata.txt"; // Ruta del archivo del autómata
 
         try {
-            Automaton automata = new Automaton(rutaArchivo);
-            Scanner scanner = new Scanner(System.in);
-            String cadena;
+            Automaton automata = new Automaton(rutaArchivo);//Creamos el objeto Automata de la clase Automata
+            Scanner scanner = new Scanner(System.in);//Creamos el objeto scanner
+            String cadena;//Creamos la variable que contendrá la cadena
 
             System.out.println("Ingrese cadenas para verificar si pertenecen al autómata (escriba 'salir' para terminar):");
             while (true) {
