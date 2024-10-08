@@ -1,18 +1,17 @@
-public class Empleado{
-    //Atributos
+public abstract class Empleado {
+    // Atributos
     private String firstName;
     private String flastName;
     private String mlastName;
     private String nss;
 
-    //Constructor
-    public Empleado(String firstName, String flastName, String mlastName, String nss){
+    // Constructor
+    public Empleado(String firstName, String flastName, String mlastName, String nss) {
         this.firstName = firstName;
         this.flastName = flastName;
         this.mlastName = mlastName;
         this.nss = nss;
     }
-
 
     public String getFirstName() {
         return this.firstName;
@@ -45,16 +44,12 @@ public class Empleado{
     public void setNss(String nss) {
         this.nss = nss;
     }
-    
+
+    public abstract double ingresos();
+
     @Override
-    public String toString(){
-        return String.format("%s %s %s\nNúmero de seguro social: %s", 
+    public String toString() {
+        return String.format("Empleado: %s %s %s\nNúmero de seguro social: %s", 
         firstName, flastName, mlastName, nss);
-
     }
-
-
-
-
-
 }
