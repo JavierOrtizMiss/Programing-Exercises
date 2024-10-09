@@ -22,7 +22,7 @@ public class NominaApp {
             System.out.println("6. Terminar");
             System.out.print("Seleccione una opción: ");
             opcion = sc.nextInt();
-            sc.nextLine();  // Limpiar el buffer
+            sc.nextLine();  
 
             switch (opcion) {
                 case 1:
@@ -110,7 +110,7 @@ public class NominaApp {
                     clean();
                     System.out.println("\nNómina:");
                     for (Empleado emp : empleados) {
-                        System.out.println(emp); // Imprime la representación en String del empleado
+                        System.out.println(emp); 
                         System.out.println("Ingresos: $" + emp.ingresos());
                         System.out.println("-------------------------------");
                     }
