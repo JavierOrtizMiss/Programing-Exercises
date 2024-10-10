@@ -110,11 +110,18 @@ public class NominaApp {
                     clean();
                     System.out.println("\nNómina:");
                     for (Empleado emp : empleados) {
+                        if (emp instanceof EmpleadoBaseMasComision) {
+                            EmpleadoBaseMasComision empBaseMasComision = (EmpleadoBaseMasComision) emp;
+                            double newBaseSalary = empBaseMasComision.getBaseSalary() + (empBaseMasComision.getBaseSalary() * 0.10); // Aumentar 10%
+                            empBaseMasComision.setBaseSalary(newBaseSalary); 
+                            System.out.println("--Aumento al salario base del 10%");
+                        }
                         System.out.println(emp); 
                         System.out.println("Ingresos: $" + emp.ingresos());
                         System.out.println("-------------------------------");
                     }
                     break;
+                
 
                 case 6:
                     System.out.println("Terminando programa...");

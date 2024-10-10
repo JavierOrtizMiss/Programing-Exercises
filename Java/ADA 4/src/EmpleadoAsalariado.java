@@ -6,6 +6,14 @@ public class EmpleadoAsalariado extends Empleado {
         this.weeklySalary = weeklySalary;
     }
 
+    public double getWeeklySalary() {
+        return this.weeklySalary;
+    }
+
+    public void setWeeklySalary(double weeklySalary) {
+        this.weeklySalary = weeklySalary;
+    }
+
     @Override
     public double ingresos() {
         return weeklySalary;
