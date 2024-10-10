@@ -8,6 +8,22 @@ public class EmpleadoPorHoras extends Empleado {
         this.hoursWorked = hoursWorked;
     }
 
+    public double getHourlyWage() {
+        return this.hourlyWage;
+    }
+
+    public void setHourlyWage(double hourlyWage) {
+        this.hourlyWage = hourlyWage;
+    }
+
+    public int getHoursWorked() {
+        return this.hoursWorked;
+    }
+
+    public void setHoursWorked(int hoursWorked) {
+        this.hoursWorked = hoursWorked;
+    }
+
     @Override
     public double ingresos() {
         if (hoursWorked <= 40) {

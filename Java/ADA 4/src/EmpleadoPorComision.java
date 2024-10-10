@@ -8,6 +8,22 @@ public class EmpleadoPorComision extends Empleado {
         this.commissionRates = commissionRates;
     }
 
+    public double getGrossSales() {
+        return this.grossSales;
+    }
+
+    public void setGrossSales(double grossSales) {
+        this.grossSales = grossSales;
+    }
+
+    public double getCommissionRates() {
+        return this.commissionRates;
+    }
+
+    public void setCommissionRates(double commissionRates) {
+        this.commissionRates = commissionRates;
+    }
+
     @Override
     public double ingresos() {
         return commissionRates * grossSales;
