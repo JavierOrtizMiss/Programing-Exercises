@@ -125,7 +125,9 @@ public class NominaApp {
 
                     for (Factura fact : facturas) {
                         System.out.println(fact);
+                        System.out.println("-------------------------------");
                     }
+                    clean();
                     break;
                 
                 case 6:
