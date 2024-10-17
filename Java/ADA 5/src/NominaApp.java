@@ -9,6 +9,7 @@ public class NominaApp {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ArrayList<Empleado> empleados = new ArrayList<>();
+        ArrayList<Factura> facturas = new ArrayList<>();
         int opcion;
 
         do {
@@ -18,8 +19,9 @@ public class NominaApp {
             System.out.println("2. Empleado por comisión");
             System.out.println("3. Empleado por horas");
             System.out.println("4. Empleado base más comisión");
-            System.out.println("5. Imprimir nómina");
-            System.out.println("6. Terminar");
+            System.out.println("5. Facturas");
+            System.out.println("6. Imprimir nómina");
+            System.out.println("7. Terminar");
             System.out.print("Seleccione una opción: ");
             opcion = sc.nextInt();
             sc.nextLine();  
@@ -106,6 +108,27 @@ public class NominaApp {
                     break;
 
                 case 5:
+                    // Imprimir facturas
+                    clean();
+                    System.out.println("Ingrese los datos de la factura:");
+                    System.out.print("Número de pieza: ");
+                    String numeroPieza = sc.nextLine();
+                    System.out.print("Descripción de la pieza: ");
+                    String descripcionPieza = sc.nextLine();
+                    System.out.print("Cantidad: ");
+                    int cantidad = sc.nextInt();
+                    System.out.print("Precio por artículo: ");
+                    double precioPorArticulo = sc.nextDouble();
+                    facturas.add(new Factura(numeroPieza, descripcionPieza, cantidad, precioPorArticulo));
+                    clean();
+                    System.out.println("---Facturas----");
+
+                    for (Factura fact : facturas) {
+                        System.out.println(fact);
+                    }
+                    break;
+                
+                case 6:
                     // Imprimir nómina
                     clean();
                     System.out.println("\nNómina:");
@@ -121,9 +144,8 @@ public class NominaApp {
                         System.out.println("-------------------------------");
                     }
                     break;
-                
-
-                case 6:
+                    
+                case 7:
                     System.out.println("Terminando programa...");
                     break;
 
