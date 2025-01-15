@@ -1,0 +1,1 @@
+Diseño[[:space:]]de[[:space:]]Software/CSVREADER/src/*.csv filter=lfs diff=lfs merge=lfs -text
