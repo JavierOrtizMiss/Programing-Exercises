@@ -2,12 +2,10 @@ public class Main {
 
     public static void main(String[] args) {
         // Ruta del archivo CSV
-        String filePath = "alumnos.csv"; // Cambia esto por la ruta real del archivo
+        String ruta = "alumnas.csv"; 
 
-        // Llamar al método leerCsv desde la clase CsvReader
-        String[][] matriz = ComponenteLeerCsv.leerCsv(filePath);
+        String[][] matriz = ComponenteLeerCsv.leerCsv(ruta);
 
-        // Imprimir el contenido del archivo CSV
         if (matriz != null) {
             System.out.println("-------Contenido del archivo CSV---------\n");
             for (String[] fila : matriz) {
@@ -21,7 +19,7 @@ public class Main {
                 System.out.println();
             }
         } else {
-            System.out.println("El archivo CSV no pudo ser procesado.");
+            System.out.println("El archivo CSV no se pudo leer.");
         }
     }
 }

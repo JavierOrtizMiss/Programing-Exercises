@@ -4,11 +4,11 @@ import java.io.IOException;
 
 public class ComponenteLeerCsv {
 
-    public static String[][] leerCsv(String filePath) {
+    public static String[][] leerCsv(String ruta) {
         String[][] matriz = null;
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader(filePath));
+            BufferedReader br = new BufferedReader(new FileReader(ruta));
             int filas = 0;
             int columnas = 0;
             String line;
@@ -26,7 +26,7 @@ public class ComponenteLeerCsv {
             // Reiniciar el BufferedReader para leer de nuevo
             br.close();
 
-            BufferedReader br2 = new BufferedReader(new FileReader(filePath));
+            BufferedReader br2 = new BufferedReader(new FileReader(ruta));
 
             // Llenar la matriz con los datos del archivo
             int filaActual = 0;
