@@ -52,6 +52,14 @@ class arrayQueue
                 Queue[++rear] = i;    
         len++ ;        
     }    
+
+
+    public void moveLeft() {
+        for (int i = 0; i < rear; i++) {
+            Queue[i] = Queue[i + 1]; 
+        }
+        rear--; 
+    }
     
     public int remove() 
     {
@@ -67,7 +75,7 @@ class arrayQueue
                 rear = -1;
             }
             else
-                front++;                
+                moveLeft();               
             return ele;
         }        
     }
