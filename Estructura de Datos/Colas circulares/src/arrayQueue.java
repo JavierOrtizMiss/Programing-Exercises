@@ -39,7 +39,7 @@ class arrayQueue {
             front = 0;
             rear = 0;
         } else {
-            rear = (front + 1) % size;
+            rear = (rear + 1) % size;
         }
         Queue[rear] = i;
         len++;
@@ -50,7 +50,7 @@ class arrayQueue {
             throw new NoSuchElementException("Underflow Exception");
         }
         int ele = Queue[front];
-        if (front == rear) { // Si solo hay un elemento
+        if (front == rear) { 
             front = -1;
             rear = -1;
         } else {
