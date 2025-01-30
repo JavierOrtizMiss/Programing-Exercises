@@ -8,7 +8,14 @@ public class CapCali {
             System.out.println("Ingrese la calificación de " + estudiante.getNombres() + " " + estudiante.getApellido1() + " " + estudiante.getApellido2());
             double calificacion;
             while (true) {
+                try{
                 calificacion = sc.nextDouble();
+                } catch (Exception e) {
+                    System.out.println("Calificación inválida.");
+                    sc.nextLine();
+                    continue;
+
+                }
                 if (calificacion >= 1 && calificacion <= 100) {
                     break;
                 } else {

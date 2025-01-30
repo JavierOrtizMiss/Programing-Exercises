@@ -7,8 +7,8 @@ public class LeerCSV {
         ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
          try {
             BufferedReader br = new BufferedReader(new FileReader(ruta));
-            String linea = br.readLine();
-            while (linea != null) {
+            String linea;
+            while ((linea=br.readLine()) != null) {
                 String[] contenido = linea.split(",");
                 Estudiante estudiante = new Estudiante(contenido[0], contenido[1], contenido[2], contenido[3]);
                 estudiantes.add(estudiante);

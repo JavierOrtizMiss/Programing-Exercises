@@ -7,7 +7,7 @@ public class CrearCSV {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
             for (Estudiante estudiante : estudiantes) {
-                bw.write(estudiante.getMatricula() + ", Diseño de Software, " + estudiante.getApellido1() + "," + estudiante.getApellido2() + "," + estudiante.getNombres() + "," + estudiante.getCalificacion());
+                bw.write(estudiante.getMatricula() + ", Diseño de Software, " + estudiante.getCalificacion());
                 bw.newLine();
             }
             bw.close();

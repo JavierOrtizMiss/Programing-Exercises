@@ -53,21 +53,17 @@ class Deque {
             return;
         }
  
-        // si deque esta inicialmente vacía
         if (front == -1) {
             front = 0;
             rear = 0;
         }
- 
-        // rear esta en la última posición 
-        else if (rear == size - 1)
+
+        else if (rear == size - 1){
             rear = 0;
- 
-        // incrementa rear en '1'
-        else
+        }
+        else{
             rear = rear + 1;
- 
-        // inserta el elemento
+    }
         arr[rear] = key;
     }
  
@@ -79,17 +75,15 @@ class Deque {
             return;
         }
  
-        // Deque tiene solo un elemento
         if (front == rear) {
             front = -1;
             rear = -1;
         }
         else
-            // regresa a la posición inicial
             if (front == size - 1)
             front = 0;
  
-        else // incrementa front en '1' para sacar el elemento actual
+        else 
             front = front + 1;
     }
  
@@ -99,8 +93,6 @@ class Deque {
             System.out.println(" Underflow");
             return;
         }
- 
-        // Deque tiene un solo elemento
         if (front == rear) {
             front = -1;
             rear = -1;
@@ -140,18 +132,18 @@ class Deque {
         return rear - front + 1;
     }
 
-    void display()
-    {
-        System.out.print("\nQueue = ");
+    void display() {
         if (isEmpty()) {
-            System.out.print("Empty\n");
+            System.out.println("Queue = Empty");
             return;
         }
+
+        System.out.print("Queue = ");
         int i = front;
-        for (int count = 0; count < size; count++) {
+        do {
             System.out.print(arr[i] + " ");
             i = (i + 1) % size;
-        }
+        } while (i != (rear + 1) % size);
         System.out.println();
     }
 }
