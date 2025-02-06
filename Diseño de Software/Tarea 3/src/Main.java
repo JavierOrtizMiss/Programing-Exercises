@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String respuesta;
-        
+
         while (true) {
             System.out.print("¿Desea ingresar calificaciones? (s/n): ");
             respuesta = scanner.nextLine().trim().toLowerCase();

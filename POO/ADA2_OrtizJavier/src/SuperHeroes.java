@@ -4,7 +4,6 @@ public class SuperHeroes {
     private String descripcion;
     private boolean capa;
 
-
     //Constructor
     public SuperHeroes(String nombre, String descripcion, boolean capa) {
         this.nombre = nombre;

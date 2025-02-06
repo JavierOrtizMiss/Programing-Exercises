@@ -3,17 +3,14 @@ public class Dimensiones {
     private double alto;
     private double ancho;
     private double profundidad;
-    private double volumen;
-
     //Constructor
     public Dimensiones(double alto, double ancho, double profundidad) {
         this.alto = alto;
         this.ancho = ancho;
         this.profundidad = profundidad;
     }
-
+    
     //Getters
-
     public double getAlto() {
         return alto;
     }
@@ -27,7 +24,7 @@ public class Dimensiones {
     }
 
     public double getVolumen() {
-        return volumen = alto * ancho * profundidad;
+        return alto * ancho * profundidad;
     }
 
     
