@@ -3,12 +3,30 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    public static void clean() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String respuesta;
 
         while (true) {
-            System.out.print("¿Desea ingresar calificaciones? (s/n): ");
+            String bienvenida = """
+
+                '########::'####:'########:'##::: ##:'##::::'##:'########:'##::: ##:'####:'########:::'#######::
+                ##.... ##:. ##:: ##.....:: ###:: ##: ##:::: ##: ##.....:: ###:: ##:. ##:: ##.... ##:'##.... ##:
+                ##:::: ##:: ##:: ##::::::: ####: ##: ##:::: ##: ##::::::: ####: ##:: ##:: ##:::: ##: ##:::: ##:
+                ########::: ##:: ######::: ## ## ##: ##:::: ##: ######::: ## ## ##:: ##:: ##:::: ##: ##:::: ##:
+                ##.... ##:: ##:: ##...:::: ##. ####:. ##:: ##:: ##...:::: ##. ####:: ##:: ##:::: ##: ##:::: ##:
+                ##:::: ##:: ##:: ##::::::: ##:. ###::. ## ##::: ##::::::: ##:. ###:: ##:: ##:::: ##: ##:::: ##:
+                ########::'####: ########: ##::. ##:::. ###:::: ########: ##::. ##:'####: ########::. #######::
+                ........:::....::........::..::::..:::::...:::::........::..::::..::....::........::::.......:::
+                           
+            """;
+
+            System.out.println(bienvenida);
+            System.out.print("\n¿Desea ingresar calificaciones? (s/n): \n");
             respuesta = scanner.nextLine().trim().toLowerCase();
             
             if (respuesta.equals("s")) {
@@ -24,7 +42,10 @@ public class Main {
         
         String nombreArchivo;
         File file;
-        
+
+        clean();
+
+        System.out.println("\n---El programa utlizará la ruta en la que esté este programa---\n");
         while (true) {
             System.out.print("Ingrese el nombre del archivo CSV (sin poner el .csv): ");
             nombreArchivo = scanner.nextLine().trim();
@@ -45,15 +66,18 @@ public class Main {
         }
         
         try {
+            clean();
             ArrayList<Estudiante> students = LeerCSV.leerCSV(file.getAbsolutePath());
             CapCali.capturarCalificaciones(students);
             
-            String outputFilename = file.getParent() + File.separator + "calificaciones.csv";
+            System.out.println("\nEscriba el nombre con el que desea guardar el archivo: ");
+            String nameoutputfile = scanner.nextLine().trim();
+            String outputFilename = file.getParent() + File.separator + nameoutputfile + ".csv";
             CrearCSV.crearCSV(students, outputFilename);
-            
             System.out.println("Archivo de calificaciones generado correctamente en: " + outputFilename);
         } catch (Exception e) {
             System.out.println("Error al generar el archivo de calificaciones: " + e.getMessage());
+            main(args);
         }
         
         scanner.close();

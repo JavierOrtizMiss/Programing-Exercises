@@ -3,7 +3,7 @@ import java.util.*;
 
 public class LeerCSV {
 
-    public static ArrayList<Estudiante> leerCSV (String ruta){
+    public static ArrayList<Estudiante> leerCSV (String ruta) throws Exception{
         ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
          try {
             BufferedReader br = new BufferedReader(new FileReader(ruta));
@@ -14,7 +14,7 @@ public class LeerCSV {
                 estudiantes.add(estudiante);
             }
          } catch (Exception e) {
-            System.out.println("Error al leer el archivo" + e.getMessage());
+            throw new Exception(e.getMessage());
          }
         return estudiantes;
     }
