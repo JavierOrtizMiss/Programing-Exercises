@@ -1,13 +1,15 @@
-package Vista;
-import Modelo.Empleado;
-import Modelo.EmpleadoAsalariado;
-import Modelo.EmpleadoPorHoras;
-import Modelo.EmpleadoPorComision;
-import Modelo.EmpleadoBaseMasComision;
+package vista;
 import java.util.Scanner;
+
+import modelo.Empleado;
+import modelo.EmpleadoAsalariado;
+import modelo.EmpleadoBaseMasComision;
+import modelo.EmpleadoPorComision;
+import modelo.EmpleadoPorHoras;
+
 import java.util.ArrayList;
 
-public class GenerarNomina {
+public class GenerarNomina{
     public static void main(String[] args) {
         
         ArrayList<Empleado> empleados = new ArrayList<>();

@@ -1,36 +1,36 @@
 package modelo;
 
-public class Empleado {
-    //Atributos 
-    private int seguroSocial;
+public abstract class Empleado {
+    //Atributos
+    private int nss;
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
 
     //Constructor
-    public Empleado(int seguroSocial, String nombre, String apellidoPaterno, String apellidoMaterno) {
-        this.seguroSocial = seguroSocial;
+    public Empleado(int nss, String nombre, String apellidoPaterno, String apellidoMaterno) {
+        this.nss = nss;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
     }
 
-    //Getters y Setters
+    //Métodos get y set
 
-    public int getSeguroSocial() {
-        return seguroSocial;
+    public int getNss() {
+        return nss;
     }
 
-    public void setSeguroSocial(int seguroSocial) {
-        this.seguroSocial = seguroSocial;
+    public void setNss(int nss) {
+        this.nss = nss;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String primerNombre) {
+        this.nombre = primerNombre;
     }
 
     public String getApellidoPaterno() {
@@ -48,5 +48,8 @@ public class Empleado {
     public void setApellidoMaterno(String apellidoMaterno) {
         this.apellidoMaterno = apellidoMaterno;
     }
+
+    //Método abstracto
+    public abstract double ingresos();
 
 }

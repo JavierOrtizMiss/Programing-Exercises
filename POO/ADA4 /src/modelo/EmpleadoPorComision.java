@@ -1,4 +1,3 @@
-
 package modelo;
 
 public class EmpleadoPorComision extends Empleado{
@@ -7,13 +6,13 @@ public class EmpleadoPorComision extends Empleado{
     private double tarifaComision;
 
     //Constructor
-    public EmpleadoPorComision(int seguroSocial, String nombre, String apellidoPaterno, String apellidoMaterno, double ventasBrutas, double tarifaComision) {
-        super(seguroSocial, nombre, apellidoPaterno, apellidoMaterno);
+    public EmpleadoPorComision(int nss, String nombre, String apellidoPaterno, String apellidoMaterno, double ventasBrutas, double tarifaComision) {
+        super(nss, nombre, apellidoPaterno, apellidoMaterno);
         this.ventasBrutas = ventasBrutas;
         this.tarifaComision = tarifaComision;
     }
 
-    //Getters y Setters
+    //Métodos get y set
 
     public double getVentasBrutas() {
         return ventasBrutas;
@@ -31,13 +30,19 @@ public class EmpleadoPorComision extends Empleado{
         this.tarifaComision = tarifaComision;
     }
 
-    public double calcularSueldo(){
+    //Método abstracto
+    @Override
+    public double ingresos() {
         return ventasBrutas * tarifaComision;
     }
 
+    //Método toString
+
     @Override
-    public String toString() {
-        return "\n--Empleado Por Comisión---\n" + "Nombre: " + getNombre() + " " + getApellidoPaterno() + " " + getApellidoMaterno() + "\n" + "Seguro Social: " + getSeguroSocial() + "\n" + "Sueldo: " + calcularSueldo();
+    public String toString(){
+        return "\n---Empleado por Comisión---\n" + "Nombre: " + getNombre() + " " + getApellidoPaterno() + " " + getApellidoMaterno() + "\n" + "Seguro Social: " + getNss() + "\n" + "Ventas Brutas: " + getVentasBrutas() + "\n" + "Tarifa de Comisión: " + getTarifaComision();
     }
-    
+
+
+
 }

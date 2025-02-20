@@ -1,4 +1,4 @@
-package Modelo;
+package modelo;
 
 public class EmpleadoBaseMasComision extends EmpleadoPorComision{
     private double sueldoBase;

@@ -1,4 +1,4 @@
-package Modelo;
+package modelo;
 
 public class EmpleadoAsalariado  extends Empleado{
     private double sueldo;
