@@ -23,26 +23,32 @@ class linkedList {
 
     // Inserta un nodo al inicio de la lista
     public void insertAtStart(int val) {
+        //Crear un nuevo nodo
         Node nptr = new Node(val, start, null);
 
+        //Si la lista está vacía
         if (start == null) {
             start = nptr;
             end = start;
         } else {
+            //Sino está vacía se enlaza el nuevo nodo al inicio
             start.setPrev(nptr);
             nptr.setNext(start);
             start = nptr;
         }
+        //Aumentamos el tamaño de la lista
         size++;
     }
 
     // Inserta un nodo al final de la lista
     public void insertAtEnd(int val) {
+        //Creamos un nuevo nodo
         Node nptr = new Node(val, null, end);
-
+        //Si la lista estpa vacía
         if (start == null) {
             start = nptr;
             end = start;
+        //Sino está vacía se enlaza el nuevo nodo al final
         } else {
             end.setNext(nptr);
             nptr.setPrev(end);
@@ -53,16 +59,20 @@ class linkedList {
 
     // Inserta un nodo en una posición específica
     public void insertAtPos(int val, int pos) {
+        //Creamos un nuevo nodo
         Node nptr = new Node(val, null, null);
-
+        //Si la posición es 1 entonces se inserta al inicio
         if (pos == 1) {
             insertAtStart(val);
             return;
         }
-
+        //Creamos un apuntador tipo nodo al inicio
         Node ptr = start;
+        //Recorremos la lista hasta la posición deseada
         for (int i = 2; i <= size; i++) {
+            //Una vez encontrado
             if (i == pos) {
+                //Se enlaza el nuevo nodo
                 Node tmp = ptr.getNext();
                 ptr.setNext(nptr);
                 nptr.setPrev(ptr);
@@ -108,9 +118,39 @@ class linkedList {
             ptr = ptr.getNext();
         }
     }
+// Elimina el nodo al inicio de la lista
+    public void deleteAtStart() {
+        if (isEmpty()) {
+            System.out.println("La lista está vacía, no se puede eliminar.");
+            return;
+        }
+        Node temp = start;
+        start = start.getNext();
+        start.setPrev(null);
+        size--;
+
+    }
+
+    // Elimina el nodo al final de la lista
+    public void deleteAtEnd() {
+        if (isEmpty()) {
+            System.out.println("La lista está vacía, no se puede eliminar.");
+            return;
+        }
+
+        if (start.getNext() == null) {
+            start = null;
+            end = null;
+            size--;
+            return;
+        }
+
+        end = end.getPrev();
+        end.setNext(null);
+        size--;
+    }
 
 
-    
 
     // Muestra la lista en orden normal
     public void displayForward() {

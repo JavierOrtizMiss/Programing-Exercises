@@ -52,5 +52,10 @@
         "variant": "cpp",
         "vector": "cpp",
         "algorithm": "cpp"
-    }
+    },
+    "java.project.sourcePaths": [
+        "Estructura de Datos/ADA15/src",
+        "Diseño de Software/Factory - Antes/src",
+        "Java/ProyectoMVTChi/src/main/java/com/mycompany/ejemplo/controller"
+    ]
 }

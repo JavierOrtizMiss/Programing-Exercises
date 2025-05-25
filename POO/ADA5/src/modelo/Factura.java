@@ -16,7 +16,6 @@ public class Factura implements PorPagar{
     }
 
     //Métodos get y set
-
     public String getNumeroPieza() {
         return numeroPieza;
     }

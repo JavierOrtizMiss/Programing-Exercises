@@ -13,8 +13,10 @@ public class SLinkedListTest {
             System.out.println("2. Insertar al final");
             System.out.println("3. Insertar en una posición");
             System.out.println("4. Eliminar de una posición");
-            System.out.println("5. Verificar si la lista está vacía");
-            System.out.println("6. Obtener el tamaño de la lista");
+            System.out.println("5. Eliminar al inicio");
+            System.out.println("6. Eliminar al final");
+            System.out.println("7. Verificar si la lista está vacía");
+            System.out.println("8. Obtener el tamaño de la lista");
 
             System.out.print("Selecciona una opción: ");
             int choice = scan.nextInt();
@@ -41,9 +43,17 @@ public class SLinkedListTest {
                     list.deleteAtPos(p);
                     break;
                 case 5:
-                    System.out.println("¿La lista está vacía? " + list.isEmpty());
+                    list.deleteAtStart();
+                    System.out.println("Se ha eliminado un nodo al inicio.");
                     break;
                 case 6:
+                    list.deleteAtEnd();
+                    System.out.println("Se ha eliminado un nodo al final.");
+                    break;
+                case 7:
+                    System.out.println("¿La lista está vacía? " + list.isEmpty());
+                    break;
+                case 8:
                     System.out.println("Tamaño de la lista: " + list.getSize());
                     break;
                 default:
@@ -51,12 +61,14 @@ public class SLinkedListTest {
                     break;
             }
 
-            System.out.print("¿En qué sentido deseas ver la lista? (Forward/Backward): ");
+            System.out.print("¿En qué sentido deseas ver la lista? (F/B): ");
             String direction = scan.next();
-            if (direction.equalsIgnoreCase("Forward")) {
+            if (direction.equalsIgnoreCase("F")) {
                 list.displayForward();
-            } else {
+            } else if (direction.equalsIgnoreCase("B")) {
                 list.displayBackward();
+            } else {
+                System.out.println("Opción no válida.");
             }
 
             System.out.print("\n¿Deseas continuar? (s/n): ");

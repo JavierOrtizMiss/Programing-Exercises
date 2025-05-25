@@ -49,7 +49,5 @@ public abstract class Empleado implements PorPagar{
         this.apellidoMaterno = apellidoMaterno;
     }
 
-    //Método abstracto
-    public abstract double ingresos();
 
 }

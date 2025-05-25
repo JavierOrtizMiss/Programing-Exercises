@@ -25,7 +25,7 @@ public class InterfazApp {
             System.out.println("2. Empleado por Horas");
             System.out.println("3. Empleado por Comisión");
             System.out.println("4. Empleado Base más Comisión");
-            System.out.println("5. Imprimir nómina");
+            System.out.println("5. Imprimir");
             System.out.println("6. Añadir factura");
             System.out.println("7. Salir"); 
             opcion = entradaNum.nextInt();
@@ -141,7 +141,6 @@ public class InterfazApp {
                     }
                     break;
                 case 6:
-                    //Añadir factura
                     System.out.println("Ingrese los datos de la factura: \n");
                     System.out.println("Número de piezas: ");
                     String numeroPiezas = entradaStr.nextLine();
